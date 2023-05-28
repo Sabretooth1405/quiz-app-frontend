@@ -1,6 +1,5 @@
 import Footer from "./footer"
 import DispImg from '../media/nf.jpg'
-import DispImg2 from '../media/ls.webp'
 import SignUp from "./SignUp"
 
 function SignUpPage() {
