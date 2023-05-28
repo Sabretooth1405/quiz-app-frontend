@@ -11,42 +11,12 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { useNavigate } from "react-router-dom";
-
-
+import AuthContext from '../context/AuthContext'
+import { useContext } from 'react';
 
 
 export default function SignIn() {
-    const navigate = useNavigate()
-    async function SignInRequest(data) {
-        
-        data = {
-            'username': data.get('username'),
-            'password': data.get('password')
-        }
-        let res = await fetch('http://localhost:8000/api/auth/',
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(data),
-            })
-        if (!res.ok) {
-            console.log('invalid credentials')
-            return 1;
-        }
-        res = await res.json()
-        localStorage.setItem("myToken", res.token);
-        navigate(`/home`)
-        return 0;
-    }
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        let status = await SignInRequest(data);
-        console.log(`Status is ${status}`);
-    };
+   const{loginUser}=useContext(AuthContext)
 
     return (
 
@@ -66,7 +36,7 @@ export default function SignIn() {
                 <Typography component="h1" variant="h5">
                     Sign in
                 </Typography>
-                <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+                <Box component="form" onSubmit={loginUser} noValidate sx={{ mt: 1 }}>
                     <TextField
                         margin="normal"
                         required

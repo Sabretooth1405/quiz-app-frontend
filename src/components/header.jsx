@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { CameraAltOutlined } from '@mui/icons-material';
 
 function Header(){
+     let token = localStorage.getItem('myToken')
     return(
         <AppBar position='relative'>
             <Toolbar>

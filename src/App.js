@@ -4,64 +4,40 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from './components/loginPage';
+import SignUpPage from './components/signUpPage';
 import Home from './components/home';
 import PrivateRoutes from './utils/PrivateRoutes';
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthProvider } from './context/AuthContext'
+import ResponsiveAppBar from './components/responiveAppBar';
+
+const queryClient = new QueryClient();
+
 function App() {
   const theme = createTheme()
-  // const [isLoggedIn, setIsloggedIn] = useState(false)
   
-  
-  
-
-  // const isLoggedInHandler = (flag) => {
-  //   if (flag) {
-  //     setIsloggedIn(true);
-  //   }
-  //   else {
-  //     setIsloggedIn(false)
-  //   }
-  // }
-  // async function testLogin() {
-  //   const token = localStorage.getItem('myToken')
-  //   let res = await fetch('http://localhost:8000/api/login-test/',
-  //     {
-  //       method: "GET",
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         "Authorization": `Token ${token}`
-  //       },
-  //     })
-   
-  //   if (res.ok) {
-  //     res = await res.json()
-     
-  //     isLoggedInHandler(true)
-  //     usernameHandler(res.username)
-  //   }
-  // }
-  // useEffect(() => {
-  //   testLogin()
-  //   loadingHandler()
-  //   console.log(loading)
-  // },[])
 
   
 
   return (
     <>
       <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Header />
+          <AuthProvider>
+          <ResponsiveAppBar/>
+          {/* <Header/> */}
           <Routes>
             <Route element={<PrivateRoutes />}>
-              <Route element={<Home />} path="/home"  />
+              <Route element={<Home />} path="/"  />
             </Route>
             <Route path="/login" element={<LoginPage />} />
-           
+            <Route path="/register" element={<SignUpPage />} />
           </Routes>
-
+          </AuthProvider>
         </ThemeProvider>
+        </QueryClientProvider>
       </BrowserRouter>
     </>
   );

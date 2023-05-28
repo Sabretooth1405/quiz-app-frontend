@@ -1,17 +1,19 @@
-import SignIn from "./login"
 import Footer from "./footer"
+import DispImg from '../media/nf.jpg'
 import DispImg2 from '../media/ls.webp'
-function LoginPage(){
+import SignUp from "./SignUp"
+
+function SignUpPage() {
     return (
         <div className='grid-container'>
             <div>
-                <img src={DispImg2} alt="alt text" className='disp-img' />
+                <img src={DispImg} alt="alt text" className='disp-img' />
             </div>
             <div>
-                <SignIn />
+                <SignUp />
                 <Footer />
             </div>
         </div>
     )
 }
-export default LoginPage;
+export default SignUpPage;
