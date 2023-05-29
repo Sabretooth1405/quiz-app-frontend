@@ -20,6 +20,20 @@ const getStats = async ({ queryKey }) => {
     return [questionRes.json(),answerRes.json()]
     
 }
+export const myQuestions=async ()=>{
+    const token = localStorage.getItem('myToken')
+     let questionRes = await fetch('http://localhost:8000/api/friends/questions/list/',
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token}`
+            },
+        })
+    
+    questionRes= await questionRes.json()
+    return questionRes
+}
 
 
 export default getStats;
