@@ -54,7 +54,7 @@ hr {
 
 .feed {
     border: 0.8px solid rgba(56, 53, 53, 0.889);
-    margin-top: 2%;
+    margin-top: 7%;
     border-radius: 5%;
     padding-left: 1rem;
     padding-right: 1rem;
@@ -68,7 +68,7 @@ hr {
     margin-top: 0;
 }
 
-form {
+.question form {
     display: flex;
     gap: 1rem;
     margin-top: 1rem;
@@ -82,4 +82,48 @@ form {
 button {
     height: fit-content;
     align-self: center;
+}
+.question-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+.edit-btn{
+    height: fit-content;
+}
+
+.edit-btns{
+    display: flex;
+    gap: 0.5rem
+}
+.edit-cont{
+    box-sizing: border-box;
+    background-color: white;
+    margin-bottom: 2rem;
+    border-radius: 5%;
+    padding-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    box-shadow: -3px -3px 5px 0px rgba(0, 0, 0, 0.75);
+        -webkit-box-shadow: -3px -3px 5px 0px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: -3px -3px 5px 0px rgba(0, 0, 0, 0.75);
+    
+}
+.edit-cont .typo{
+    margin-top: 1rem;
+}
+.answer-edit div{
+    align-self: center;
+}
+
+.correct-ans{
+    display: flex;
+    gap: 1rem;
+}
+.correct{
+    background-color: rgb(0, 128, 0,0.3);
+}
+.incorrect{
+    background-color: rgb(255,0,0,0.3);
 }

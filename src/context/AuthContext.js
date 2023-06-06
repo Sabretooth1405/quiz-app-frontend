@@ -16,6 +16,7 @@ export const AuthProvider = ({children}) => {
     let loginUser = async (e) =>{
         e.preventDefault()
         let data = new FormData(e.currentTarget);
+        console.log(data.get('checkbox'))
         data = {
             'username': data.get('username'),
             'password': data.get('password')

@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import { TextField } from '@mui/material'
 import {Button} from '@mui/material'
 import { Snackbar } from '@mui/base'
-
+const user=localStorage.getItem('user')
 export default function Question(props) {
+  
     const getDateFromTimestamp=()=>{let timestamp= props.question.created_at
                const date=new Date(timestamp)
                const month=date.toLocaleString('default', { month: 'long' });
@@ -15,7 +16,6 @@ export default function Question(props) {
     const [reqStatus,setReqStatus]=useState(false)
     const handleClose=()=>{
         setOpenSnackbar(false)
-        setReqStatus(false)
     }
   return (
     <>
@@ -33,6 +33,7 @@ export default function Question(props) {
                 setOpenSnackbar(true)
                 if(statusCode===1){
                     setReqStatus(true)
+                    localStorage.setItem(`${user}_question_${props.question.id}`,true)
                 } else{
                     setReqStatus(false)
                 }
@@ -46,11 +47,12 @@ export default function Question(props) {
                 className='textfield'
                 placeholder='Answer'
                 name='answer'
+                disabled={reqStatus}
               />
               <Button
                 type="submit"
                 variant="contained"
-               
+                disabled={reqStatus}
               >
                 Submit
               </Button>

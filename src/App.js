@@ -11,8 +11,12 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthProvider } from './context/AuthContext'
 import ResponsiveAppBar from './components/responiveAppBar';
 import QuestionsPage from './components/questionsPage';
+import MyQuestionsPage from './components/myQuestionsPage';
+import EditQuestionPage from './components/editQuestionPage';
+import CreateQuestionsPage from './components/createQuestionsPage';
+import MyAnswersPage from './components/myAnswersPage';
+import CorrectAnswersPage from './components/correctAnswerPage';
 const queryClient = new QueryClient();
-
 function App() {
   const theme = createTheme()
   
@@ -32,6 +36,11 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route element={<Home />} path="/"  />
               <Route element={<QuestionsPage />} path="/questions"  />
+              <Route element={<CreateQuestionsPage />} path="/questions/create"  />
+              <Route element={<MyQuestionsPage />} path="/myquestions"  />
+              <Route element={<EditQuestionPage />} path="/myquestions/:user/:id"  />
+              <Route element={<MyAnswersPage />} path="/myanswers"  />
+              <Route element={<CorrectAnswersPage />} path="/answers/:id"  />
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUpPage />} />
