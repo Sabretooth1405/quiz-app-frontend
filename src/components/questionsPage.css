@@ -5,6 +5,7 @@
     gap: 1rem;
 }
 
+   
 h1,
 h2,
 h3 {
@@ -126,4 +127,26 @@ button {
 }
 .incorrect{
     background-color: rgb(255,0,0,0.3);
+}
+.search-bar-div{
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.searchbar{
+    height: fit-content;
+    flex-basis: 60%;
+   
+}
+.search{
+    margin-top: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+.friend-searchbar{
+    width: 100%;
+}
+.user-display{
+    width: 100%;
 }

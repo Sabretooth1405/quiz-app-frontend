@@ -16,6 +16,8 @@ import EditQuestionPage from './components/editQuestionPage';
 import CreateQuestionsPage from './components/createQuestionsPage';
 import MyAnswersPage from './components/myAnswersPage';
 import CorrectAnswersPage from './components/correctAnswerPage';
+import FriendsPage from './components/friendsPage';
+
 const queryClient = new QueryClient();
 function App() {
   const theme = createTheme()
@@ -41,6 +43,7 @@ function App() {
               <Route element={<EditQuestionPage />} path="/myquestions/:user/:id"  />
               <Route element={<MyAnswersPage />} path="/myanswers"  />
               <Route element={<CorrectAnswersPage />} path="/answers/:id"  />
+              <Route element={<FriendsPage />} path="/friends"  />
             </Route>
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<SignUpPage />} />

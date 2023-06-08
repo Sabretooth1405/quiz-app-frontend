@@ -34,9 +34,10 @@ export const feedQuestions=async ()=>{
     questionRes= await questionRes.json()
     return questionRes
 }
-export const myQuestions=async ()=>{
+export const myQuestions=async ({queryKey})=>{
     const token = localStorage.getItem('myToken')
-     let questionRes = await fetch('http://localhost:8000/api/list/',
+    const [_,q]=queryKey
+     let questionRes = await fetch(`http://localhost:8000/api/list?q=${q}`,
         {
             method: "GET",
             headers: {
@@ -93,6 +94,50 @@ export const myQuestionAnswerList=async ({queryKey})=>{
     answerRes= await answerRes.json()
     return answerRes
 }
-
-
+export const myFriends=async ({queryKey})=>{
+    const token = localStorage.getItem('myToken')
+    
+     let friendRes = await fetch(`http://localhost:8000/api/friends/list/`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token}`
+            },
+        })
+    
+    friendRes= await friendRes.json()
+    return friendRes
+}
+export const userList=async ({queryKey})=>{
+    const token = localStorage.getItem('myToken')
+    const [_,q,username]=queryKey
+     let userRes = await fetch(`http://localhost:8000/api/user-list/${username}?q=${q}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token}`
+            },
+        })
+    
+    userRes= await userRes.json()
+    return userRes
+}
+export const sendFriendRequest=async (username)=>{
+    const token = localStorage.getItem('myToken')
+     let friendRes = await fetch(`http://localhost:8000/api/friends/requests/send/${username}`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token}`
+            },
+        })
+    if(!friendRes.ok){
+        return [-1,friendRes]
+    }
+    friendRes= await friendRes.json()
+    return [1,friendRes]
+}
 export default getStats;
