@@ -8,7 +8,7 @@ import { feedQuestions } from '../utils/GetStats';
 import { useQuery } from '@tanstack/react-query';
 import Question from './question';
 import Spinner from './spinner';
-
+const BASE_URL="https://quiz-app-backend-production-744d.up.railway.app"
 const submitAnswer = async(e,id)=>{
   e.preventDefault()
 let data = new FormData(e.currentTarget);
@@ -16,7 +16,7 @@ data={
   'answer_given':data.get('answer')
 }
 const token=localStorage.getItem('myToken')
-  let res = await fetch(`http://localhost:8000/api/answers/create/${id}`,
+  let res = await fetch(`${BASE_URL}/api/answers/create/${id}`,
             {
                 method: "POST",
                 headers: {

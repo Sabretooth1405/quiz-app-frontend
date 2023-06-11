@@ -5,7 +5,7 @@ const AuthContext = createContext()
 
 export default AuthContext;
 
-
+const BASE_URL="https://quiz-app-backend-production-744d.up.railway.app"
 export const AuthProvider = ({children}) => {
     let [authTokens, setAuthTokens] = useState(()=> localStorage.getItem('myToken') ?localStorage.getItem('myToken') : null)
     let [user, setUser] = useState(()=> localStorage.getItem('myUser') ? localStorage.getItem('myUser') : null)
@@ -21,7 +21,7 @@ export const AuthProvider = ({children}) => {
             'username': data.get('username'),
             'password': data.get('password')
         }
-        let res = await fetch('http://localhost:8000/api/auth/',
+        let res = await fetch(`${BASE_URL}/api/auth/`,
             {
                 method: "POST",
                 headers: {
@@ -36,7 +36,7 @@ export const AuthProvider = ({children}) => {
         res = await res.json()
         localStorage.setItem("myToken", res.token);
         const token = localStorage.getItem('myToken')
-        let res2 = await fetch('http://localhost:8000/api/login-test/',
+        let res2 = await fetch(`${BASE_URL}/api/login-test/`,
             {
                 method: "GET",
                 headers: {

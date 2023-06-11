@@ -1,3 +1,4 @@
+ const BASE_URL="https://quiz-app-backend-production-744d.up.railway.app"
  export const createQuestionRequest= async (e)=>{
     e.preventDefault()
     let data = new FormData(e.currentTarget);
@@ -23,7 +24,7 @@
 }
 }
     const token = localStorage.getItem('myToken')
-    let questionRes = await fetch(`http://localhost:8000/api/create/`,
+    let questionRes = await fetch(`${BASE_URL}/api/create/`,
         {
             method: "POST",
             headers: {
@@ -44,7 +45,7 @@
     "action":message
    }
     const token = localStorage.getItem('myToken')
-    let answerRes = await fetch(`http://localhost:8000/api/answers/process/${id}`,
+    let answerRes = await fetch(`${BASE_URL}/api/answers/process/${id}`,
         {
             method: "POST",
             headers: {
@@ -64,7 +65,7 @@ export const processFriendRequest= async (message,id)=>{
     "action":message
    }
     const token = localStorage.getItem('myToken')
-    let friendRes = await fetch(`http://localhost:8000/api/friends/requests/process/${id}`,
+    let friendRes = await fetch(`${BASE_URL}/api/friends/requests/process/${id}`,
         {
             method: "POST",
             headers: {

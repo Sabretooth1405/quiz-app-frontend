@@ -1,3 +1,4 @@
+ const BASE_URL="https://quiz-app-backend-production-744d.up.railway.app"
  export const   editQuestionRequest= async (e,id,originalData)=>{
     
     e.preventDefault()
@@ -45,7 +46,7 @@
     }
     const token = localStorage.getItem('myToken')
 
-     let questionRes = await fetch(`http://localhost:8000/api/detail/${id}`,
+     let questionRes = await fetch(`${BASE_URL}/api/detail/${id}`,
         {
             method: "PUT",
             headers: {
@@ -62,7 +63,7 @@
 export const editAnswerRequest= async (answer,id)=>{
     const body={'answer_given':answer}
     const token = localStorage.getItem('myToken')
-     let answerRes = await fetch(`http://localhost:8000/api/answers/detail/${id}`,
+     let answerRes = await fetch(`${BASE_URL}/api/answers/detail/${id}`,
         {
             method: "PUT",
             headers: {

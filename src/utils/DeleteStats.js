@@ -1,6 +1,7 @@
+const BASE_URL="https://quiz-app-backend-production-744d.up.railway.app"
 export const myQuestionDelete=async (id)=>{
     const token = localStorage.getItem('myToken')
-     let questionRes = await fetch(`http://localhost:8000/api/detail/${id}`,
+     let questionRes = await fetch(`${BASE_URL}/api/detail/${id}`,
         {
             method: "DELETE",
             headers: {
@@ -18,7 +19,7 @@ export const myQuestionDelete=async (id)=>{
 }
  export const deleteFriends=async (username)=>{
     const token = localStorage.getItem('myToken')
-     let friendRes = await fetch(`http://localhost:8000/api/friends/delete/${username}`,
+     let friendRes = await fetch(`${BASE_URL}/api/friends/delete/${username}`,
         {
             method: "DELETE",
             headers: {

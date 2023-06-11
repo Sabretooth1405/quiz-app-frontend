@@ -11,6 +11,8 @@ import Container from '@mui/material/Container';
 import { useNavigate } from "react-router-dom";
 import { useState } from 'react';
 import './signUpPage.css'
+
+const BASE_URL="https://quiz-app-backend-production-744d.up.railway.app"
 export default function SignUp() {
     const navigate = useNavigate()
     const [passwordMatchError, setPasswordMatchError] = useState(false);
@@ -66,7 +68,7 @@ export default function SignUp() {
             'name': data.get('name'),
 
         }
-        let res = await fetch('http://localhost:8000/api/register/',
+        let res = await fetch(`${BASE_URL}/api/register/`,
             {
                 method: "POST",
                 headers: {

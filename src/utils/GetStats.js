@@ -1,7 +1,8 @@
+const BASE_URL="https://quiz-app-backend-production-744d.up.railway.app"
 const getStats = async ({ queryKey }) => {
     const token = localStorage.getItem('myToken')
     const [_,user]=queryKey
-    let statsRes = await fetch(`http://localhost:8000/api/users/detail/${user}`,
+    let statsRes = await fetch(`${BASE_URL}/api/users/detail/${user}`,
         {
             method: "GET",
             headers: {
@@ -18,7 +19,7 @@ const getStats = async ({ queryKey }) => {
 }
 export const feedQuestions=async ()=>{
     const token = localStorage.getItem('myToken')
-     let questionRes = await fetch('http://localhost:8000/api/friends/questions/list/',
+     let questionRes = await fetch('${BASE_URL}/api/friends/questions/list/',
         {
             method: "GET",
             headers: {
@@ -34,7 +35,7 @@ export const feedQuestions=async ()=>{
 export const myQuestions=async ({queryKey})=>{
     const token = localStorage.getItem('myToken')
     const [_,q]=queryKey
-     let questionRes = await fetch(`http://localhost:8000/api/list?q=${q}`,
+     let questionRes = await fetch(`${BASE_URL}/api/list?q=${q}`,
         {
             method: "GET",
             headers: {
@@ -49,7 +50,7 @@ export const myQuestions=async ({queryKey})=>{
 export const myQuestionDetail=async ({queryKey})=>{
     const token = localStorage.getItem('myToken')
     const [_,id]=queryKey
-     let questionRes = await fetch(`http://localhost:8000/api/detail/${id}`,
+     let questionRes = await fetch(`${BASE_URL}/api/detail/${id}`,
         {
             method: "GET",
             headers: {
@@ -64,7 +65,7 @@ export const myQuestionDetail=async ({queryKey})=>{
 export const myAnswers=async ({queryKey})=>{
     const token = localStorage.getItem('myToken')
     
-     let answerRes = await fetch(`http://localhost:8000/api/myanswers/`,
+     let answerRes = await fetch(`${BASE_URL}/api/myanswers/`,
         {
             method: "GET",
             headers: {
@@ -79,7 +80,7 @@ export const myAnswers=async ({queryKey})=>{
 export const myQuestionAnswerList=async ({queryKey})=>{
     const token = localStorage.getItem('myToken')
     const [_,id]=queryKey
-     let answerRes = await fetch(`http://localhost:8000/api/answers/list/${id}`,
+     let answerRes = await fetch(`${BASE_URL}/api/answers/list/${id}`,
         {
             method: "GET",
             headers: {
@@ -94,7 +95,7 @@ export const myQuestionAnswerList=async ({queryKey})=>{
 export const myFriends=async ({queryKey})=>{
     const token = localStorage.getItem('myToken')
     
-     let friendRes = await fetch(`http://localhost:8000/api/friends/list/`,
+     let friendRes = await fetch(`${BASE_URL}/api/friends/list/`,
         {
             method: "GET",
             headers: {
@@ -109,7 +110,7 @@ export const myFriends=async ({queryKey})=>{
 export const userList=async ({queryKey})=>{
     const token = localStorage.getItem('myToken')
     const [_,q,username]=queryKey
-     let userRes = await fetch(`http://localhost:8000/api/user-list/${username}?q=${q}`,
+     let userRes = await fetch(`${BASE_URL}/api/user-list/${username}?q=${q}`,
         {
             method: "GET",
             headers: {
@@ -123,7 +124,7 @@ export const userList=async ({queryKey})=>{
 }
 export const sendFriendRequest=async (username)=>{
     const token = localStorage.getItem('myToken')
-     let friendRes = await fetch(`http://localhost:8000/api/friends/requests/send/${username}`,
+     let friendRes = await fetch(`${BASE_URL}/api/friends/requests/send/${username}`,
         {
             method: "GET",
             headers: {
@@ -139,7 +140,7 @@ export const sendFriendRequest=async (username)=>{
 }
 export const getFriendRequests=async ()=>{
     const token = localStorage.getItem('myToken')
-     let friendRes = await fetch(`http://localhost:8000/api/friends/requests/list/`,
+     let friendRes = await fetch(`${BASE_URL}/api/friends/requests/list/`,
         {
             method: "GET",
             headers: {
