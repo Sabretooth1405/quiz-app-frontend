@@ -8,7 +8,7 @@ export default function Question(props) {
     const getDateFromTimestamp=()=>{let timestamp= props.question.created_at
                const date=new Date(timestamp)
                const month=date.toLocaleString('default', { month: 'long' });
-               const day=date.getDay()
+               const day=date.getDate()
                const year=date.getFullYear()
                return`${day} ${month}, ${year}`}
 
