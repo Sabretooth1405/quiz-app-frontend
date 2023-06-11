@@ -19,7 +19,7 @@ const getStats = async ({ queryKey }) => {
 }
 export const feedQuestions=async ()=>{
     const token = localStorage.getItem('myToken')
-     let questionRes = await fetch('${BASE_URL}/api/friends/questions/list/',
+     let questionRes = await fetch(`${BASE_URL}/api/friends/questions/list/`,
         {
             method: "GET",
             headers: {
