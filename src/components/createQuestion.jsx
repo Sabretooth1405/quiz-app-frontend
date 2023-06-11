@@ -43,7 +43,7 @@ export default function CreateQuestion() {
                     const user=localStorage.getItem('user')
                     const [result,_]= await createQuestionRequest(e)
                      if(result===1){
-                        navigate(`/myquestions/`)
+                        navigate(`/myquestions`)
                      }}} noValidate sx={{ mt: 1 }}>
         
             <InputLabel id="cat-label">Category</InputLabel>
