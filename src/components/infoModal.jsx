@@ -22,7 +22,7 @@ export default function BasicModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const mb=(props.mb||props.mb===0)?props.mb:2
   return (
     <div style={{width:'100%'}}>
       <Button type="button"
@@ -30,7 +30,7 @@ export default function BasicModal(props) {
                         disabled={props.notEditable? true: false}
                         variant="contained"
                         color={props.color?props.color:"error"}
-                        sx={{ mt: 3, mb: 2 }}
+                        sx={{ mt: 3, mb:mb  }}
                         onClick={handleOpen}>{props.buttonText}
                 
         </Button>
@@ -53,7 +53,8 @@ export default function BasicModal(props) {
                             navigate(props.redirect)
                             console.log('here')
                            }
-                            handleClose()}}
+                            handleClose()
+                            return flag}}
                         variant="contained"
                         color={props.color?props.color:"error"}
                         sx={{ mt: 3, mb: 2 }}

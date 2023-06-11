@@ -21,13 +21,13 @@ function ResponsiveAppBar(props) {
 const pages = ['Questions','Answers','Friends'];
 const pageLinks= {
     'Questions': `/questions`,
-    'Answers': `/answers`,
-    'Friends': `/Friends`
+    'Answers': `/myanswers`,
+    'Friends': `/friends`
 }
 const settings = [ 'Account', 'Dashboard', 'Logout'];
 const loggedInSettingLinks={
-    'Account': `/account`,
-    'Dashboard': `/dashboard`,
+    'Account': `/`,
+    'Dashboard': `/`,
     'Logout':logoutUser,
 }
 const loggedOutSettings=['Login',  'Register']

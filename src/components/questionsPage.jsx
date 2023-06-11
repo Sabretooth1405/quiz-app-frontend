@@ -35,7 +35,7 @@ const user=localStorage.getItem('user')
 export default function QuestionsPage() {
   const results=useQuery(['feedQuestions'],feedQuestions)
   const filteredResults= results.isLoading?null:results.data.filter((d)=>{
-    if(localStorage.hasOwnProperty(`${user}_question_${d.id}`)){
+    if(d.is_answered){
       return false
     }else{
       return true

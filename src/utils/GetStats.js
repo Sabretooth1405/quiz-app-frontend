@@ -1,6 +1,7 @@
 const getStats = async ({ queryKey }) => {
     const token = localStorage.getItem('myToken')
-    let questionRes = await fetch('http://localhost:8000/api/list/',
+    const [_,user]=queryKey
+    let statsRes = await fetch(`http://localhost:8000/api/users/detail/${user}`,
         {
             method: "GET",
             headers: {
@@ -8,16 +9,11 @@ const getStats = async ({ queryKey }) => {
                 "Authorization": `Token ${token}`
             },
         })
-    let answerRes = await fetch('http://localhost:8000/api/myanswers/',
-        {
-            method: "GET",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Token ${token}`
-            },
-        })
-
-    return [questionRes.json(),answerRes.json()]
+    if(!statsRes.ok){
+        return [-1,-1];
+    }
+    statsRes=await statsRes.json()
+    return statsRes
     
 }
 export const feedQuestions=async ()=>{
@@ -32,6 +28,7 @@ export const feedQuestions=async ()=>{
         })
     
     questionRes= await questionRes.json()
+    console.log(questionRes)
     return questionRes
 }
 export const myQuestions=async ({queryKey})=>{
@@ -140,4 +137,21 @@ export const sendFriendRequest=async (username)=>{
     friendRes= await friendRes.json()
     return [1,friendRes]
 }
+export const getFriendRequests=async ()=>{
+    const token = localStorage.getItem('myToken')
+     let friendRes = await fetch(`http://localhost:8000/api/friends/requests/list/`,
+        {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token}`
+            },
+        })
+    if(!friendRes.ok){
+        return friendRes
+    }
+    friendRes= await friendRes.json()
+    return friendRes
+}
+
 export default getStats;

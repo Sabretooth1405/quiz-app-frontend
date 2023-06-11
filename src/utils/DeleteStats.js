@@ -16,3 +16,19 @@ export const myQuestionDelete=async (id)=>{
     
     return [1,questionRes.status]
 }
+ export const deleteFriends=async (username)=>{
+    const token = localStorage.getItem('myToken')
+     let friendRes = await fetch(`http://localhost:8000/api/friends/delete/${username}`,
+        {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token}`
+            },
+        })
+    if(!friendRes.ok){
+        return -1
+    }
+    friendRes= await friendRes.json()
+    return 1
+}

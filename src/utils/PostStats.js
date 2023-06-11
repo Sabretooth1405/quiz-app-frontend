@@ -59,5 +59,25 @@
     answerRes= await answerRes.json()
     return 1
 }
+export const processFriendRequest= async (message,id)=>{
+  const body={
+    "action":message
+   }
+    const token = localStorage.getItem('myToken')
+    let friendRes = await fetch(`http://localhost:8000/api/friends/requests/process/${id}`,
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Token ${token}`
+            },
+            body: JSON.stringify(body),
+        })
+    if(!friendRes.ok){
+        return -1;
+    }
+    friendRes= await friendRes.json()
+    return 1
+}
 
 export default createQuestionRequest;
